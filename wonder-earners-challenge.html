@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wonder Earners — November Challenge</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2334C759'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='800' text-anchor='middle' fill='white' font-family='-apple-system,sans-serif'%3EW%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#F5F5F7; --card:#FFFFFF; --ink:#1D1D1F; --ink2:#6E6E73;
+    --green:#34C759; --green-d:#1F9D45; --green-soft:#E8F8EC;
+    --gold:#F5A623; --gold-soft:#FEF3E2; --line:rgba(0,0,0,.08);
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+    --r:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+
+  /* ===== top nav ===== */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,245,247,.82);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{max-width:1080px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.02rem;letter-spacing:-.01em}
+  .logo-badge{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#34C759,#1F9D45);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.95rem}
+  .logo small{display:block;font-weight:600;font-size:.68rem;color:var(--ink2);letter-spacing:.04em;text-transform:uppercase}
+  .nav .spacer{flex:1}
+  .btn-pill{
+    display:inline-flex;align-items:center;gap:6px;border:0;cursor:pointer;font-family:inherit;
+    background:var(--ink);color:#fff;font-size:.86rem;font-weight:700;padding:9px 18px;border-radius:999px;
+    transition:transform .15s ease,opacity .15s ease;
+  }
+  .btn-pill:active{transform:scale(.97)}
+  .btn-pill.gold{background:linear-gradient(135deg,#F5A623,#E28A00);box-shadow:0 6px 16px rgba(245,166,35,.35)}
+  .btn-pill.green{background:var(--green);box-shadow:0 6px 16px rgba(52,199,89,.32)}
+
+  /* ===== shop strip ===== */
+  .shop{max-width:1080px;margin:0 auto;padding:20px 16px 4px}
+  .shop-title{font-size:.8rem;font-weight:700;color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .shop-title::after{content:"";flex:1;height:1px;background:var(--line)}
+  .shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .shop-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+    display:flex;flex-direction:column;box-shadow:var(--shadow);
+    transition:transform .18s ease;
+  }
+  .shop-card:hover{transform:translateY(-2px)}
+  .shop-card .thumb{background:#fff;padding:10px;display:grid;place-items:center;flex:0 0 auto}
+  .shop-card .thumb img{width:100%;max-width:220px;aspect-ratio:1/1;object-fit:contain;border-radius:12px;background:#fff}
+  .shop-card .meta{padding:4px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .shop-card h3{font-size:.98rem;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .shop-card .sub{font-size:.78rem;color:var(--ink2);line-height:1.35}
+  .shop-card .go{
+    margin-top:auto;display:inline-flex;align-items:center;gap:6px;align-self:flex-start;
+    font-size:.82rem;font-weight:700;color:var(--green-d);padding:7px 14px;border-radius:999px;
+    background:var(--green-soft);
+  }
+  .shop-card .go svg{width:14px;height:14px}
+
+  /* ===== hero ===== */
+  .hero{
+    max-width:1080px;margin:0 auto;padding:56px 16px 44px;text-align:center;position:relative;
+  }
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gold-d);background:var(--gold-soft);border:1px solid rgba(245,166,35,.25);
+    padding:7px 16px;border-radius:999px;margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem,7vw,4.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.04;
+    background:linear-gradient(115deg,#1D1D1F 30%,#34C759 65%,#F5A623 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero h1 .star{display:block;font-size:clamp(1.1rem,2.4vw,1.5rem);font-weight:800;letter-spacing:.18em;margin-top:10px;color:var(--ink);background:none;-webkit-text-fill-color:var(--ink)}
+  .hero .tag{margin:18px auto 0;max-width:640px;font-size:clamp(1rem,2.2vw,1.18rem);color:var(--ink2);font-weight:500}
+  .hero .tag strong{color:var(--ink);font-weight:700}
+  .hero .period{
+    margin:22px auto 0;display:inline-flex;align-items:center;gap:10px;
+    background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+    border-radius:999px;padding:10px 22px;font-size:.92rem;font-weight:700;
+  }
+  .hero .period .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--green-soft);animation:pulse 1.8s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(52,199,89,.22)}50%{box-shadow:0 0 0 7px rgba(52,199,89,.08)}}
+
+  /* ===== section base ===== */
+  .sec{max-width:1080px;margin:0 auto;padding:34px 16px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+  .sec-head h2{font-size:1.55rem;font-weight:800;letter-spacing:-.02em}
+  .sec-head .en{font-size:.8rem;font-weight:700;color:var(--ink2);letter-spacing:.06em;text-transform:uppercase}
+  .sec-head::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* ===== reward tiers ===== */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .tier{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+    padding:18px 16px;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;
+  }
+  .tier .gmv{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+  .tier .posts{font-size:.8rem;color:var(--ink2);font-weight:600}
+  .tier .reward{
+    margin-top:8px;align-self:flex-start;font-size:.85rem;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,#F5A623,#E28A00);border-radius:999px;padding:6px 14px;
+    box-shadow:0 4px 12px rgba(245,166,35,.3);
+  }
+  .tier.best{border-color:rgba(245,166,35,.45)}
+  .tier.best::after{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,#F5A623,#FFD37E)}
+
+  /* ===== commission ===== */
+  .comm{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .comm-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+    padding:20px 16px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center;
+  }
+  .comm-card .pct{font-size:2.1rem;font-weight:800;letter-spacing:-.03em;color:var(--green-d)}
+  .comm-card .hit{font-size:.88rem;font-weight:700}
+  .comm-card .amt{
+    margin-top:4px;font-size:1.25rem;font-weight:800;letter-spacing:-.01em;
+    background:linear-gradient(135deg,#F5A623,#E28A00);-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .comm-card .note{font-size:.76rem;color:var(--ink2)}
+  .comm-guarantee{
+    margin-top:12px;background:linear-gradient(120deg,#7A4B00,#E28A00 45%,#F5A623);
+    color:#fff;border-radius:var(--r);padding:18px 22px;display:flex;align-items:center;justify-content:center;gap:12px;
+    font-size:1.06rem;font-weight:600;box-shadow:0 10px 26px rgba(226,138,0,.28);text-align:center;
+  }
+  .comm-guarantee svg{width:24px;height:24px;flex:0 0 auto}
+  .comm-guarantee strong{font-weight:800;text-decoration:underline;text-underline-offset:3px}
+  .comm-strip{
+    margin-top:12px;background:linear-gradient(120deg,#1F9D45,#34C759);color:#fff;
+    border-radius:var(--r);padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:10px;
+    font-weight:800;font-size:1rem;box-shadow:0 10px 24px rgba(52,199,89,.25);
+  }
+  .comm-strip svg{width:20px;height:20px;flex:0 0 auto}
+
+  /* ===== lookup ===== */
+  .lookup{
+    background:linear-gradient(180deg,#FFFFFF,#F0F9F3);
+    border:1px solid rgba(52,199,89,.18);border-radius:24px;
+    box-shadow:var(--shadow);padding:28px 22px;max-width:680px;margin:0 auto;
+  }
+  .lookup .label{font-size:.8rem;font-weight:800;color:var(--green-d);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .lookup h3{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+  .lookup .desc{font-size:.92rem;color:var(--ink2);margin-bottom:18px}
+  .lookup-form{display:flex;gap:10px}
+  .lookup-form input{
+    flex:1;min-width:0;font-family:inherit;font-size:16px;font-weight:600;
+    border:1px solid var(--line);border-radius:14px;padding:13px 16px;background:#fff;color:var(--ink);
+    outline:none;transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .lookup-form input:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(52,199,89,.14)}
+  .lookup-form input::placeholder{color:#B8B8BC;font-weight:500}
+  .lookup-form .btn-pill{flex:0 0 auto;padding:13px 22px;font-size:.9rem}
+  .lookup-result{margin-top:16px;display:none;border-radius:16px;padding:18px;background:#fff;border:1px solid var(--line)}
+  .lookup-result.show{display:block;animation:rise .3s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .lookup-result .handle{font-weight:800;font-size:1.05rem;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+  .lookup-result .handle::before{content:"@";color:var(--green-d)}
+  .lookup-result .pending{
+    display:flex;gap:12px;align-items:flex-start;background:var(--gold-soft);
+    border:1px solid rgba(245,166,35,.3);border-radius:12px;padding:12px 14px;margin-top:8px;
+  }
+  .lookup-result .pending svg{width:20px;height:20px;flex:0 0 auto;color:var(--gold-d);margin-top:2px}
+  .lookup-result .pending p{font-size:.88rem;color:#7A5A00}
+  .lookup-result .pending strong{display:block;font-size:.9rem;color:#5C4300;margin-bottom:2px}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+  .stat-box{background:#F7F7F9;border-radius:14px;padding:14px;text-align:center}
+  .stat-box .num{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
+  .stat-box .lbl{font-size:.76rem;color:var(--ink2);font-weight:600;margin-top:2px}
+
+  /* ===== info ===== */
+  .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .info-item{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+    padding:18px;display:flex;gap:14px;align-items:flex-start;
+  }
+  .info-item .ic{
+    flex:0 0 auto;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;
+    background:var(--green-soft);color:var(--green-d);
+  }
+  .info-item .ic svg{width:20px;height:20px}
+  .info-item p{font-size:.9rem;color:var(--ink)}
+  .info-item p b{font-weight:700}
+
+  /* ===== footer ===== */
+  .foot{max-width:1080px;margin:0 auto;padding:36px 16px 48px;text-align:center}
+  .foot .fine{font-size:.82rem;color:var(--ink2);max-width:560px;margin:0 auto 20px}
+  .foot .copy{font-size:.76rem;color:#A8A8AC;margin-top:18px}
+  .foot .btn-pill{font-size:.95rem;padding:14px 30px}
+
+  /* ===== coin rain ===== */
+  .rain{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+  .coin{
+    position:absolute;top:-48px;width:30px;height:30px;border-radius:50%;
+    background:radial-gradient(circle at 32% 28%,#FFE9A8,#F5A623 55%,#C97F00);
+    color:#8A5B00;display:grid;place-items:center;font-weight:800;font-size:13px;
+    box-shadow:inset 0 -2px 4px rgba(0,0,0,.18),0 2px 6px rgba(245,166,35,.35);
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    0%{transform:translateY(0) rotate(0deg);opacity:0}
+    6%{opacity:1}
+    100%{transform:translateY(108vh) rotate(400deg);opacity:.25}
+  }
+
+  /* ===== toast ===== */
+  .toast{
+    position:fixed;left:50%;bottom:34px;transform:translateX(-50%) translateY(20px);z-index:80;
+    background:rgba(29,29,31,.94);color:#fff;font-size:.88rem;font-weight:600;
+    padding:12px 20px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.25);
+    opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;max-width:86vw;text-align:center;
+  }
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ===== responsive ===== */
+  @media(max-width:719px){
+    .shop-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+    .shop-card{flex-direction:column}
+    .shop-card .thumb{padding:6px;width:100%}
+    .shop-card .thumb img{width:100%;max-width:none;border-radius:8px}
+    .shop-card .meta{padding:2px 8px 10px;gap:4px}
+    .shop-card h3{font-size:.72rem;letter-spacing:0}
+    .shop-card .sub{display:none}
+    .shop-card .go{font-size:.62rem;padding:4px 9px}
+    .go-x{display:none}
+    .tiers{grid-template-columns:repeat(2,1fr)}
+    .comm{grid-template-columns:1fr}
+    .info-grid{grid-template-columns:1fr}
+    .sec-head{flex-direction:column;align-items:flex-start;gap:4px}
+    .sec-head::after{display:none}
+    .hero{padding-top:44px}
+  }
+  @media(max-width:379px){
+    .tiers{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .hero .period .dot{animation:none}
+    .coin{animation:none;display:none}
+    .shop-card:hover{transform:none}
+    .btn-pill:active{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== coin rain layer ===== -->
+<div class="rain" id="rain" aria-hidden="true"></div>
+
+<!-- ===== top nav ===== -->
+<nav class="nav">
+  <div class="nav-in">
+    <div class="logo">
+      <span class="logo-badge">W</span>
+      <span>WonderBiotics<small>Creator Program</small></span>
+    </div>
+    <div class="spacer"></div>
+  </div>
+</nav>
+
+<!-- ===== shop strip ===== -->
+<div class="shop">
+  <div class="shop-title">Shop the Bundles</div>
+  <div class="shop-grid">
+
+    <a class="shop-card" href="https://shop.tiktok.com/us/pdp/wonderbiotics-daily-prebiotic-fiber-powder-30-stick-packs/1732349905506177607" target="_blank" rel="noopener">
+      <div class="thumb"><img src="assets/fiber3.png" alt="Fiber x3 bundle" loading="lazy"></div>
+      <div class="meta">
+        <h3>Fiber*3</h3>
+        <div class="sub">Daily Fiber Mix 30×3 + Gift Tote — the hero bundle</div>
+        <span class="go">Shop <span class="go-x">on TikTok</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="https://shop.tiktok.com/us/pdp/1732755001804558919" target="_blank" rel="noopener">
+      <div class="thumb"><img src="assets/gut-combo.png" alt="Fiber + gut bundle" loading="lazy"></div>
+      <div class="meta">
+        <h3>Fiber+gut</h3>
+        <div class="sub">Daily Fiber Mix + Probiotics for gut health</div>
+        <span class="go">Shop <span class="go-x">on TikTok</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+        </span>
+      </div>
+    </a>
+
+    <a class="shop-card" href="https://shop.tiktok.com/us/pdp/1732754363040698951" target="_blank" rel="noopener">
+      <div class="thumb"><img src="assets/meta-combo.png" alt="Fiber + metabolic health bundle" loading="lazy"></div>
+      <div class="meta">
+        <h3>Fiber+metabolic health</h3>
+        <div class="sub">Daily Fiber Mix + probiotics for metabolic health</div>
+        <span class="go">Shop <span class="go-x">on TikTok</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></svg>
+        </span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- ===== hero ===== -->
+<header class="hero">
+  <div class="kicker">
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>
+    November Challenge · Live Now
+  </div>
+  <h1>WONDER EARNERS<span class="star">EARN LIKE A STAR</span></h1>
+  <p class="tag">Join the <strong>Wonder Earners</strong>. Extra cash rewards + bonus commission for driving GMV this November. <strong>The more you post, the more you make!</strong></p>
+  <div class="period"><span class="dot"></span>Challenge Period: Nov 1 – Nov 30 · Black Friday</div>
+</header>
+
+<!-- ===== reward tiers ===== -->
+<section class="sec" id="rewards">
+  <div class="sec-head">
+    <h2>Reward Tiers</h2>
+    <span class="en">Cash on top of your commission</span>
+  </div>
+  <div class="tiers">
+    <div class="tier">
+      <span class="gmv">&gt;$300 GMV</span>
+      <span class="posts">Min. 5 posts</span>
+      <span class="reward">$100 REWARD</span>
+    </div>
+    <div class="tier">
+      <span class="gmv">&gt;$500 GMV</span>
+      <span class="posts">Min. 7 posts</span>
+      <span class="reward">$150 REWARD</span>
+    </div>
+    <div class="tier">
+      <span class="gmv">&gt;$1,000 GMV</span>
+      <span class="posts">Min. 10 posts</span>
+      <span class="reward">$300 REWARD</span>
+    </div>
+    <div class="tier">
+      <span class="gmv">&gt;$2,000 GMV</span>
+      <span class="posts">Min. 14 posts</span>
+      <span class="reward">$500 REWARD</span>
+    </div>
+    <div class="tier best">
+      <span class="gmv">&gt;$5,000 GMV</span>
+      <span class="posts">Min. 17 posts</span>
+      <span class="reward">$1,000 REWARD</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== commission ===== -->
+<section class="sec" id="commission">
+  <div class="sec-head">
+    <h2>Plus Commission Boost</h2>
+    <span class="en">Bonus commission on all sales</span>
+  </div>
+  <div class="comm">
+    <div class="comm-card">
+      <span class="pct">35%</span>
+      <span class="hit">Hit $5K GMV</span>
+      <span class="amt">At least $1,750</span>
+      <span class="note">in commission</span>
+    </div>
+    <div class="comm-card">
+      <span class="pct">40%</span>
+      <span class="hit">Hit $10K GMV</span>
+      <span class="amt">At least $4,000</span>
+      <span class="note">in commission</span>
+    </div>
+    <div class="comm-card">
+      <span class="pct">45%</span>
+      <span class="hit">Hit $30K GMV</span>
+      <span class="amt">At least $13,500</span>
+      <span class="note">in commission</span>
+    </div>
+  </div>
+  <div class="comm-strip">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/></svg>
+    Bonus Commission on ALL sales — every sale counts toward your boost
+  </div>
+  <div class="comm-guarantee">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+    Shortfall vs. the TikTok backend? <strong>We pay the difference in cash.</strong>
+  </div>
+</section>
+
+<!-- ===== stats lookup ===== -->
+<section class="sec" id="lookup">
+  <div class="sec-head">
+    <h2>Check My Stats</h2>
+    <span class="en">Videos &amp; GMV lookup</span>
+  </div>
+  <div class="lookup">
+    <div class="label">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Creator Lookup
+    </div>
+    <h3>How am I doing?</h3>
+    <p class="desc">Enter your TikTok handle to see your current video count and GMV. Only your own stats are shown — no public leaderboard.</p>
+    <form class="lookup-form" id="lookupForm">
+      <input id="handleInput" type="text" placeholder="your TikTok handle" autocomplete="off" spellcheck="false">
+      <button class="btn-pill green" type="submit">Check</button>
+    </form>
+    <div class="lookup-result" id="lookupResult"></div>
+  </div>
+</section>
+
+<!-- ===== useful info ===== -->
+<section class="sec" id="info">
+  <div class="sec-head">
+    <h2>Useful Information</h2>
+    <span class="en">How it works</span>
+  </div>
+  <div class="info-grid">
+    <div class="info-item">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+      </span>
+      <p><b>No enrollment needed</b> — just post. Videos posted Nov 1–30 (EST) count.</p>
+    </div>
+    <div class="info-item">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8 12 4l8 4-8 4z"/><path d="M4 8v8l8 4 8-4V8"/><path d="M12 12v8"/></svg>
+      </span>
+      <p><b>Show the product</b> — videos must show real product shots (Daily Fiber Mix / Probiotics).</p>
+    </div>
+    <div class="info-item">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </span>
+      <p><b>Get paid</b> — rewards paid at your highest tier only. Cash via PayPal / Wise — W-9 needed.</p>
+    </div>
+    <div class="info-item">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+      </span>
+      <p><b>Verified</b> via sign-up form + GMV / views screenshots by our team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== footer ===== -->
+<footer class="foot">
+  <p class="fine">Reward tiers and commission boost cannot be stacked.</p>
+  <p class="copy">© 2026 WonderBiotics · Wonder Earners · Creator Program</p>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ===== stats data (filled from Excel later; keep empty until then) ===== */
+var STATS = {}; // { "handle": { videos: 0, gmv: 0 } }
+
+/* ===== toast ===== */
+var toastEl = document.getElementById('toast');
+var toastTimer = null;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+}
+
+/* ===== stats lookup ===== */
+var form = document.getElementById('lookupForm');
+var input = document.getElementById('handleInput');
+var result = document.getElementById('lookupResult');
+
+function esc(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var h = input.value.trim();
+  if(!h){
+    toast('Enter your TikTok handle first');
+    input.focus();
+    return;
+  }
+  var key = h.replace(/^@/,'').toLowerCase();
+  var row = STATS[key];
+  if(row && typeof row.videos === 'number'){
+    result.innerHTML =
+      '<div class="handle">' + esc(h.replace(/^@/,'')) + '</div>' +
+      '<div class="stat-grid">' +
+        '<div class="stat-box"><div class="num">' + row.videos + '</div><div class="lbl">Videos Posted</div></div>' +
+        '<div class="stat-box"><div class="num">$' + row.gmv.toLocaleString() + '</div><div class="lbl">GMV</div></div>' +
+      '</div>';
+  } else {
+    result.innerHTML =
+      '<div class="handle">' + esc(h.replace(/^@/,'')) + '</div>' +
+      '<div class="pending">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>' +
+        '<p><strong>GMV numbers are coming to this page soon.</strong>Keep posting — your video count and GMV will be published here as the challenge progresses. Check back after you post.</p>' +
+      '</div>';
+  }
+  result.classList.remove('show');
+  void result.offsetWidth;
+  result.classList.add('show');
+  result.scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+
+/* ===== coin rain (plays once on entry) ===== */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var rain = document.getElementById('rain');
+  var count = 26;
+  for(var i=0;i<count;i++){
+    (function(){
+      var c = document.createElement('span');
+      c.className = 'coin';
+      c.textContent = '$';
+      var size = 22 + Math.random()*18;
+      c.style.width = size + 'px';
+      c.style.height = size + 'px';
+      c.style.fontSize = (size*0.42) + 'px';
+      c.style.left = (Math.random()*100) + '%';
+      c.style.animationDuration = (2.4 + Math.random()*2.4) + 's';
+      c.style.animationDelay = (Math.random()*1.4) + 's';
+      rain.appendChild(c);
+      var t = setTimeout(function(){
+        if(c.parentNode) c.parentNode.removeChild(c);
+      }, 9000);
+      if(c._t) clearTimeout(c._t); c._t = t;
+    })();
+  }
+})();
+</script>
+</body>
+</html>
