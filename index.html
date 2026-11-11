@@ -175,6 +175,57 @@
   .stat-box{background:#F7F7F9;border-radius:14px;padding:14px;text-align:center}
   .stat-box .num{font-size:1.5rem;font-weight:800;letter-spacing:-.02em}
   .stat-box .lbl{font-size:.76rem;color:var(--ink2);font-weight:600;margin-top:2px}
+  .lookup-result .handle-sub{font-size:.82rem;color:var(--ink2);font-weight:600;margin:-2px 0 4px}
+  .lookup-result .stat-note{font-size:.78rem;color:var(--ink2);margin-top:12px;line-height:1.5}
+  .lookup-result .stat-link{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:.8rem;font-weight:700;color:var(--green-d);text-decoration:none}
+  .lookup-result .stat-link:hover{text-decoration:underline}
+
+
+  /* ===== leaderboard ticker ===== */
+  .lb-sub{font-size:.88rem;color:var(--ink2);margin:-4px 0 16px}
+  .tick-wrap{position:relative;overflow:hidden;border-radius:var(--r);background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:16px 0}
+  .tick-wrap::before,.tick-wrap::after{content:"";position:absolute;top:0;bottom:0;width:52px;z-index:2;pointer-events:none}
+  .tick-wrap::before{left:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,0))}
+  .tick-wrap::after{right:0;background:linear-gradient(270deg,#fff,rgba(255,255,255,0))}
+  .tick-track{display:flex;width:max-content;animation:tickScroll 36s linear infinite}
+  .tick-wrap:hover .tick-track{animation-play-state:paused}
+  .tick-set{display:flex;gap:12px;padding:0 6px}
+  @keyframes tickScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .rank-card{flex:0 0 auto;width:240px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 15px 15px;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+  .rank-card:hover{transform:translateY(-2px);border-color:rgba(52,199,89,.45);box-shadow:0 10px 24px rgba(0,0,0,.07)}
+  .rank-top{display:flex;align-items:center;gap:8px;margin-bottom:9px}
+  .rank-no{width:24px;height:24px;flex:0 0 auto;border-radius:8px;display:grid;place-items:center;font-size:.78rem;font-weight:800;background:var(--green-soft);color:var(--green-d)}
+  .rank-card.top1 .rank-no{background:linear-gradient(135deg,#FFE3AE,#F5A623);color:#6B4500}
+  .rank-name{font-size:.95rem;font-weight:800;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rank-h{font-size:.76rem;color:var(--ink2);font-weight:600;margin-bottom:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rank-h::before{content:"@";color:var(--green-d)}
+  .rank-nums{display:flex;gap:8px}
+  .rank-num{flex:1;background:#F7F7F9;border-radius:11px;padding:8px 6px;text-align:center}
+  .rank-num b{display:block;font-size:1.02rem;font-weight:800;letter-spacing:-.02em}
+  .rank-num span{font-size:.66rem;color:var(--ink2);font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+  .lb-legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:.78rem;color:var(--ink2)}
+  .lb-legend span b{color:var(--ink);font-weight:700}
+
+  /* ===== top videos ===== */
+  .vid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .vid-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .vid-media{position:relative;background:#000}
+  .vid-media video{width:100%;aspect-ratio:9/16;max-height:460px;object-fit:cover;display:block}
+  .vid-tag{position:absolute;left:10px;top:10px;background:rgba(29,29,31,.82);color:#fff;font-size:.72rem;font-weight:800;padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+  .vid-tag.gold{background:rgba(245,166,35,.95);color:#4A2E00}
+  .vid-body{padding:14px 15px 16px;display:flex;flex-direction:column;gap:3px;flex:1}
+  .vid-title{font-size:.98rem;font-weight:800;letter-spacing:-.01em}
+  .vid-meta{font-size:.8rem;color:var(--ink2);font-weight:600}
+  .vid-meta .h{color:var(--green-d)}
+  .vid-stats{display:flex;gap:8px;margin:9px 0 12px}
+  .vid-stats>div{flex:1;background:#F7F7F9;border-radius:10px;padding:7px 8px;text-align:center}
+  .vid-stats b{display:block;font-size:.95rem;font-weight:800;letter-spacing:-.02em}
+  .vid-stats span{font-size:.66rem;color:var(--ink2);font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+  .vid-actions{display:flex;gap:8px;margin-top:auto}
+  .btn-mini{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;font-size:.82rem;font-weight:700;text-decoration:none;padding:10px 8px;border-radius:11px;background:var(--green);color:#fff;border:1px solid transparent;transition:filter .15s ease}
+  .btn-mini:hover{filter:brightness(.95)}
+  .btn-mini.ghost{background:#fff;color:var(--green-d);border-color:rgba(52,199,89,.35)}
+  .btn-mini svg{width:14px;height:14px;flex:0 0 auto}
 
   /* ===== info ===== */
   .info-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -234,6 +285,9 @@
     .tiers{grid-template-columns:repeat(2,1fr)}
     .comm{grid-template-columns:1fr}
     .info-grid{grid-template-columns:1fr}
+    .vid-grid{grid-template-columns:1fr;gap:12px}
+    .vid-media video{max-height:none}
+    .rank-card{width:212px}
     .sec-head{flex-direction:column;align-items:flex-start;gap:4px}
     .sec-head::after{display:none}
     .hero{padding-top:44px}
@@ -401,12 +455,121 @@
       Creator Lookup
     </div>
     <h3>How am I doing?</h3>
-    <p class="desc">Enter your TikTok handle to see your current video count and GMV. Only your own stats are shown — no public leaderboard.</p>
+    <p class="desc">Enter your TikTok handle to see your November video count and your all-time GMV. Handles that are not in this batch yet will show up after the next data refresh.</p>
     <form class="lookup-form" id="lookupForm">
       <input id="handleInput" type="text" placeholder="your TikTok handle" autocomplete="off" spellcheck="false">
       <button class="btn-pill green" type="submit">Check</button>
     </form>
     <div class="lookup-result" id="lookupResult"></div>
+  </div>
+</section>
+
+<!-- ===== leaderboard ===== -->
+<section class="sec" id="leaderboard">
+  <div class="sec-head">
+    <h2>Top Earners</h2>
+    <span class="en">Rolling TOP 5 &middot; November</span>
+  </div>
+  <p class="lb-sub">Ranked by total GMV. Tap a card to pull that creator's stats into the lookup below.</p>
+  <div class="tick-wrap">
+    <div class="tick-track" id="tickTrack"></div>
+  </div>
+  <div class="lb-legend">
+    <span><b>Videos</b> = posted on or after Nov 1, 2026 only</span>
+    <span><b>GMV</b> = all-time, including videos posted before November</span>
+  </div>
+</section>
+
+<!-- ===== top videos ===== -->
+<section class="sec" id="topvideos">
+  <div class="sec-head">
+    <h2>Top Videos</h2>
+    <span class="en">Watch, download, open on TikTok</span>
+  </div>
+  <p class="lb-sub">Three picks from the same data: the highest-GMV video of November, an oil-absorption demo, and a two-person dialogue.</p>
+  <div class="vid-grid">
+
+    <article class="vid-card">
+      <div class="vid-media">
+        <video controls playsinline preload="metadata" poster="assets/poster-top.jpg">
+          <source src="videos/7706439500871912718.mp4" type="video/mp4">
+        </video>
+        <span class="vid-tag gold">#1 &middot; Highest GMV</span>
+      </div>
+      <div class="vid-body">
+        <div class="vid-title">Lis Rojas</div>
+        <div class="vid-meta"><span class="h">lisrojas.10</span> &middot; Nov 9, 2026</div>
+        <div class="vid-stats">
+          <div><b>$414.66</b><span>GMV</span></div>
+          <div><b>5</b><span>Nov videos</span></div>
+        </div>
+        <div class="vid-actions">
+          <a class="btn-mini" href="videos/7706439500871912718.mp4" download="daily-fiber-mix-lis-rojas.mp4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download
+          </a>
+          <a class="btn-mini ghost" href="https://www.tiktok.com/@lisrojas.10/video/7706439500871912718" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>
+            TikTok
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="vid-card">
+      <div class="vid-media">
+        <video controls playsinline preload="metadata" poster="assets/poster-oil.jpg">
+          <source src="videos/7703782580667157774.mp4" type="video/mp4">
+        </video>
+        <span class="vid-tag">#2 &middot; Oil-absorption demo</span>
+      </div>
+      <div class="vid-body">
+        <div class="vid-title">Maya</div>
+        <div class="vid-meta"><span class="h">mayamakesgutscience</span> &middot; Nov 2, 2026</div>
+        <div class="vid-stats">
+          <div><b>$58.34</b><span>GMV</span></div>
+          <div><b>32</b><span>Nov videos</span></div>
+        </div>
+        <div class="vid-actions">
+          <a class="btn-mini" href="videos/7703782580667157774.mp4" download="daily-fiber-mix-oil-demo.mp4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download
+          </a>
+          <a class="btn-mini ghost" href="https://www.tiktok.com/@mayamakesgutscience/video/7703782580667157774" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>
+            TikTok
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <article class="vid-card">
+      <div class="vid-media">
+        <video controls playsinline preload="metadata" poster="assets/poster-duo.jpg">
+          <source src="videos/7702152381114666270.mp4" type="video/mp4">
+        </video>
+        <span class="vid-tag">#3 &middot; Two-person dialogue</span>
+      </div>
+      <div class="vid-body">
+        <div class="vid-title">Mora &amp; mom</div>
+        <div class="vid-meta"><span class="h">moralaqueteenamora</span> &middot; Oct 29, 2026</div>
+        <div class="vid-stats">
+          <div><b>$29.90</b><span>GMV</span></div>
+          <div><b>2</b><span>Nov videos</span></div>
+        </div>
+        <div class="vid-actions">
+          <a class="btn-mini" href="videos/7702152381114666270.mp4" download="daily-fiber-mix-duo.mp4">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download
+          </a>
+          <a class="btn-mini ghost" href="https://www.tiktok.com/@moralaqueteenamora/video/7702152381114666270" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M19 14v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"/></svg>
+            TikTok
+          </a>
+        </div>
+      </div>
+    </article>
+
   </div>
 </section>
 
@@ -454,7 +617,67 @@
 
 <script>
 /* ===== stats data (filled from Excel later; keep empty until then) ===== */
-var STATS = {}; // { "handle": { videos: 0, gmv: 0 } }
+/* ===== creator data (from Creative data 2026-11-01 to 11-10 export) ===== */
+var DATA = [{"n":"Beth Recomienda🛍️","h":"ofertas_tiktok_oficial","v":0,"g":1066.65,"p":7,"a":["bethrecomienda","ofertastiktokoficial"]},{"n":"Mora La Que Te Enamora","h":"moralaqueteenamora","v":2,"g":535.61,"p":13,"a":["moralaqueteenamora"]},{"n":"Edith Torres","h":"la_torres_1","v":0,"g":520.46,"p":4,"a":["edithtorres","latorres1"]},{"n":"Nicoll Montoya","h":"nicollmontoya.creator","v":1,"g":519.61,"p":9,"a":["nicollmontoya","nicollmontoyacreator"]},{"n":"Lis Rojas","h":"lisrojas.10","v":5,"g":414.66,"p":5,"a":["lisrojas","lisrojas10"]},{"n":"raquelfindss","h":"raquelfindss","v":6,"g":334.98,"p":9,"a":["raquelfindss"]},{"n":"Finn","h":"notflnnn","v":0,"g":244.63,"p":1,"a":["finn","notflnnn"]},{"n":"Maya","h":"mayamakesgutscience","v":32,"g":228.62,"p":68,"a":["maya","mayamakesgutscience"]},{"n":"everydaystealz","h":"everydaystealz","v":0,"g":220.94,"p":1,"a":["everydaystealz"]},{"n":"Hillss","h":"hilss_fit","v":0,"g":154.6,"p":2,"a":["hillss","hilssfit"]},{"n":"Construyetucuerpo","h":"construyetucuerpo2025","v":1,"g":143.22,"p":2,"a":["construyetucuerpo","construyetucuerpo2025"]},{"n":"Mari | TTS","h":"marianuchita","v":2,"g":132.73,"p":5,"a":["marianuchita","maritts"]},{"n":"Señoradelas4decadas✨","h":"","v":4,"g":99.31,"p":5,"a":["senoradelas4decadas"]},{"n":"Patrick’s Picks","h":"","v":0,"g":98.33,"p":3,"a":["patrickspicks","patrickspicks77"]},{"n":"karamhe2","h":"","v":0,"g":83.42,"p":1,"a":["karamhe2"]},{"n":"vivianettel","h":"","v":0,"g":79.99,"p":2,"a":["vivianettel"]},{"n":"liv","h":"","v":0,"g":75.11,"p":1,"a":["liv","livsbestfindss"]},{"n":"VitalityQueen233","h":"","v":0,"g":63.56,"p":55,"a":["vitalityqueen233"]},{"n":"TINA","h":"","v":3,"g":51.78,"p":3,"a":["tina"]},{"n":"Lilia FNP Educación de Salud","h":"","v":0,"g":49.81,"p":2,"a":["liliafnpeducaciondesalud"]},{"n":"greyfinds","h":"","v":0,"g":45.82,"p":2,"a":["greyfinds"]},{"n":"Alysia Magen🥊🙏","h":"","v":5,"g":39.84,"p":19,"a":["alysiamagen"]},{"n":"Anyi Oliveros","h":"","v":0,"g":39.84,"p":3,"a":["anyioliveros","anyioliveross"]},{"n":"bibianapardo13","h":"","v":0,"g":39.64,"p":3,"a":["bibianapardo13"]},{"n":"🎀 𝓓𝓪𝓷𝓲𝓮𝓵𝓪🫶🏻TTKFINDS","h":"","v":2,"g":29.9,"p":3,"a":["danielattkfinds"]},{"n":"WONDERBIOTICS","h":"","v":1,"g":29.9,"p":24,"a":["wonderbiotics"]},{"n":"Amberrrr","h":"","v":0,"g":29.9,"p":2,"a":["amberrrr"]},{"n":"andreainvegas29","h":"","v":0,"g":29.9,"p":1,"a":["andreainvegas29"]},{"n":"Catherine","h":"","v":0,"g":29.9,"p":1,"a":["catherine"]},{"n":"patito0325","h":"","v":0,"g":29.9,"p":2,"a":["patito0325"]},{"n":"racheldailyfinds","h":"","v":0,"g":29.9,"p":3,"a":["racheldailyfinds"]},{"n":"Tori’s Trendy Treasures 🎀🌀","h":"","v":0,"g":29.9,"p":1,"a":["toristrendytreasures"]},{"n":"Beusa01","h":"","v":1,"g":25.89,"p":1,"a":["beusa01"]},{"n":"Alle Brean","h":"","v":0,"g":25.89,"p":1,"a":["allebrean"]},{"n":"LYL Health - supplements","h":"","v":0,"g":25.89,"p":2,"a":["lylhealth","lylhealthsupplements"]},{"n":"wile07escaray0","h":"","v":2,"g":23.92,"p":3,"a":["wile07escaray0"]},{"n":"DrTT.Lifestyle","h":"","v":0,"g":23.92,"p":1,"a":["drttlifestyle"]},{"n":"The Last Deal Bende","h":"","v":0,"g":23.92,"p":1,"a":["thelastdealbende"]},{"n":"abue.fit","h":"","v":4,"g":23.62,"p":4,"a":["abuefit"]},{"n":"BlingByKay","h":"","v":1,"g":23.62,"p":1,"a":["blingbykay"]},{"n":"SoyNoheliaenUsa","h":"","v":1,"g":23.62,"p":2,"a":["soynoheliaenusa"]},{"n":"Sydney Palmieri","h":"","v":0,"g":23.62,"p":1,"a":["sydneypalmieri"]},{"n":"teamalejafit","h":"","v":0,"g":23.62,"p":2,"a":["teamalejafit"]},{"n":"Xiomara Vitteri","h":"","v":0,"g":23.62,"p":1,"a":["xiomaravitteri"]},{"n":"ArsenLifts","h":"","v":2,"g":20.08,"p":2,"a":["arsenlifts"]},{"n":"Karen C716","h":"","v":1,"g":20.08,"p":1,"a":["karenc716"]},{"n":"EsthelaOlivia","h":"","v":0,"g":19.9,"p":2,"a":["esthelaolivia"]},{"n":"Chely Alvarez 💖💖","h":"","v":0,"g":16.24,"p":2,"a":["chelyalvarez"]},{"n":"auryllc","h":"","v":3,"g":15.92,"p":4,"a":["auryllc"]},{"n":"fitpartnertipss","h":"","v":0,"g":15.92,"p":1,"a":["fitpartnertipss"]},{"n":"hnliezgd","h":"","v":0,"g":15.92,"p":3,"a":["hnliezgd"]},{"n":"Lex J 💕 ⭐️","h":"","v":0,"g":15.92,"p":3,"a":["lexj","lexjmonet"]},{"n":"Sandra morales💫","h":"","v":0,"g":15.92,"p":1,"a":["sandramorales"]},{"n":"Estelita fitness","h":"","v":3,"g":15.72,"p":3,"a":["estelitafitness"]},{"n":"Irmadelfin520","h":"","v":3,"g":15.72,"p":3,"a":["irmadelfin520"]},{"n":"Rochecabu","h":"","v":1,"g":15.72,"p":2,"a":["rochecabu"]},{"n":"Steph","h":"","v":1,"g":15.72,"p":1,"a":["steph"]},{"n":"Rosa Raudales","h":"","v":0,"g":15.72,"p":2,"a":["rosaraudales"]},{"n":"Ava | I Read the Label","h":"","v":20,"g":0.0,"p":42,"a":["avaireadthelabel"]},{"n":"Lis Perez 🌸🌸","h":"","v":7,"g":0.0,"p":8,"a":["lisperez"]},{"n":"Laura | Midlife Routine Notes","h":"","v":5,"g":0.0,"p":48,"a":["lauramidliferoutinenotes"]},{"n":"Emma | Fiber in Real Life","h":"","v":3,"g":0.0,"p":56,"a":["emmafiberinreallife"]},{"n":"NandaRoman","h":"","v":3,"g":0.0,"p":3,"a":["nandaroman"]},{"n":"Anaeli Dominguez","h":"","v":2,"g":0.0,"p":2,"a":["anaelidominguez"]},{"n":"angelaperes615 🎂🌞🌻🙏🏻","h":"","v":2,"g":0.0,"p":2,"a":["angelaperes615"]},{"n":"BigBodyBenz","h":"","v":2,"g":0.0,"p":2,"a":["bigbodybenz"]},{"n":"Forevermore2689","h":"","v":2,"g":0.0,"p":2,"a":["forevermore2689"]},{"n":"La potra","h":"","v":2,"g":0.0,"p":2,"a":["lapotra"]},{"n":"👜🩱👠Mi Tiendita Online👗🩴🎒","h":"","v":2,"g":0.0,"p":2,"a":["mitienditaonline"]},{"n":"100 Tips for Anxiety Relief","h":"","v":1,"g":0.0,"p":1,"a":["100tipsforanxietyrelief"]},{"n":"Ada reyes","h":"","v":1,"g":0.0,"p":1,"a":["adareyes"]},{"n":"Adoree.Latoya","h":"","v":1,"g":0.0,"p":1,"a":["adoreelatoya"]},{"n":"Aleya | Glowing over 40+","h":"","v":1,"g":0.0,"p":1,"a":["aleyaglowingover40"]},{"n":"Amy | Life • Beauty • Mom Life","h":"","v":1,"g":0.0,"p":1,"a":["amylifebeautymomlife"]},{"n":"Aracelis 🤝🙏","h":"","v":1,"g":0.0,"p":2,"a":["aracelis"]},{"n":"ashley.b.rising","h":"","v":1,"g":0.0,"p":1,"a":["ashleybrising"]},{"n":"breezytime","h":"","v":1,"g":0.0,"p":2,"a":["breezytime"]},{"n":"Calvin Fashion","h":"","v":1,"g":0.0,"p":1,"a":["calvinfashion"]},{"n":"Carlajournals","h":"","v":1,"g":0.0,"p":1,"a":["carlajournals"]},{"n":"Carol+Belleza,Skin Care, Salud","h":"","v":1,"g":0.0,"p":1,"a":["carolbellezaskincaresalud"]},{"n":"Cassie","h":"","v":1,"g":0.0,"p":1,"a":["cassie"]},{"n":"Charlinelabellevie","h":"","v":1,"g":0.0,"p":1,"a":["charlinelabellevie"]},{"n":"Chef CaDaryl","h":"","v":1,"g":0.0,"p":1,"a":["chefcadaryl"]},{"n":"childofgracegroup7texas","h":"","v":1,"g":0.0,"p":1,"a":["childofgracegroup7texas"]},{"n":"CROWNLUXE LLC","h":"","v":1,"g":0.0,"p":1,"a":["crownluxellc"]},{"n":"CrystalSweet🌛⭐️🧭","h":"","v":1,"g":0.0,"p":1,"a":["crystalsweet"]},{"n":"Dayanis & Lorenzo","h":"","v":1,"g":0.0,"p":1,"a":["dayanislorenzo"]},{"n":"Delisha acharya Lama","h":"","v":1,"g":0.0,"p":1,"a":["delishaacharyalama"]},{"n":"echosotko","h":"","v":1,"g":0.0,"p":1,"a":["echosotko"]},{"n":"Ela Vale","h":"","v":1,"g":0.0,"p":1,"a":["elavale"]},{"n":"ELIZABETH 🩵","h":"","v":1,"g":0.0,"p":1,"a":["elizabeth"]},{"n":"favoritosderaquel","h":"","v":1,"g":0.0,"p":1,"a":["favoritosderaquel"]},{"n":"Funny.Bone.RGV","h":"","v":1,"g":0.0,"p":1,"a":["funnybonergv"]},{"n":"Ghostly🧃aka 📚 S.M. Maldo 📚","h":"","v":1,"g":0.0,"p":1,"a":["ghostlyakasmmaldo"]},{"n":"Greyshaly|SAHM🎀","h":"","v":1,"g":0.0,"p":1,"a":["greyshalysahm"]},{"n":"H a n n a h 🩺📚💪🏻🏠","h":"","v":1,"g":0.0,"p":1,"a":["hannah"]},{"n":"Harperrr~🍁🍂","h":"","v":1,"g":0.0,"p":2,"a":["harperrr"]},{"n":"Ida Gonzalez 👑🎶","h":"","v":1,"g":0.0,"p":1,"a":["idagonzalez"]},{"n":"inspired&reviewing","h":"","v":1,"g":0.0,"p":1,"a":["inspiredreviewing"]},{"n":"Irresistibly You","h":"","v":1,"g":0.0,"p":1,"a":["irresistiblyyou"]},{"n":"itsevegirl24","h":"","v":1,"g":0.0,"p":1,"a":["itsevegirl24"]},{"n":"Jai 🦋","h":"","v":1,"g":0.0,"p":1,"a":["jai"]},{"n":"jdlmoney8","h":"","v":1,"g":0.0,"p":1,"a":["jdlmoney8"]},{"n":"Jean mitchel","h":"","v":1,"g":0.0,"p":3,"a":["jeanmitchel"]},{"n":"Jules","h":"","v":1,"g":0.0,"p":1,"a":["jules"]},{"n":"Keeneslife","h":"","v":1,"g":0.0,"p":1,"a":["keeneslife"]},{"n":"KiKi.curls Beauty Creator","h":"","v":1,"g":0.0,"p":1,"a":["kikicurlsbeautycreator"]},{"n":"lady b","h":"","v":1,"g":0.0,"p":1,"a":["ladyb"]},{"n":"Laz","h":"","v":1,"g":0.0,"p":1,"a":["laz"]},{"n":"Lizzie","h":"","v":1,"g":0.0,"p":1,"a":["lizzie"]},{"n":"LovelyChunku💕💙🧿","h":"","v":1,"g":0.0,"p":1,"a":["lovelychunku"]},{"n":"Maggie Maltaverne","h":"","v":1,"g":0.0,"p":1,"a":["maggiemaltaverne"]},{"n":"Meg Makes It Happen ☀️","h":"","v":1,"g":0.0,"p":1,"a":["megmakesithappen"]},{"n":"Melinda Sanchez","h":"","v":1,"g":0.0,"p":1,"a":["melindasanchez"]},{"n":"mialissette","h":"","v":1,"g":0.0,"p":1,"a":["mialissette"]},{"n":"Mulata🤭","h":"","v":1,"g":0.0,"p":1,"a":["mulata"]},{"n":"mwuah.cecile","h":"","v":1,"g":0.0,"p":1,"a":["mwuahcecile"]},{"n":"NYC Kee TT Shop Deals 🗽","h":"","v":1,"g":0.0,"p":1,"a":["nyckeettshopdeals"]},{"n":"Rachel Doll","h":"","v":1,"g":0.0,"p":1,"a":["racheldoll"]},{"n":"Rice 🌾","h":"","v":1,"g":0.0,"p":1,"a":["rice"]},{"n":"sam | mft grad student 🧠✨","h":"","v":1,"g":0.0,"p":1,"a":["sammftgradstudent"]},{"n":"senortakito","h":"","v":1,"g":0.0,"p":1,"a":["senortakito"]},{"n":"Setty L'ajt 🫟💙","h":"","v":1,"g":0.0,"p":1,"a":["settylajt"]},{"n":"Shenyta la chapina","h":"","v":1,"g":0.0,"p":1,"a":["shenytalachapina"]},{"n":"Shop Biz Collabs","h":"","v":1,"g":0.0,"p":1,"a":["shopbizcollabs"]},{"n":"tattoo_chic_having_fun","h":"","v":1,"g":0.0,"p":1,"a":["tattoochichavingfun"]},{"n":"The Megan Edit","h":"","v":1,"g":0.0,"p":1,"a":["themeganedit"]},{"n":"Tiny","h":"","v":1,"g":0.0,"p":1,"a":["tiny"]},{"n":"trishygeee","h":"","v":1,"g":0.0,"p":1,"a":["trishygeee"]},{"n":"Wealthy Shanae 💰","h":"","v":1,"g":0.0,"p":2,"a":["wealthyshanae"]},{"n":"Yusmari1🩸🩸🩸","h":"","v":1,"g":0.0,"p":1,"a":["yusmari1"]},{"n":"Zen Finds Dealz","h":"","v":1,"g":0.0,"p":1,"a":["zenfindsdealz"]},{"n":"♡Holli🐻 | TTS♡","h":"","v":1,"g":0.0,"p":1,"a":["hollitts"]},{"n":"🌼🌼Desiree’Arrasmith🌼🌼","h":"","v":1,"g":0.0,"p":1,"a":["desireearrasmith"]},{"n":"🐣🍒🌵🇲🇽🦅Gloria💜♒️💯","h":"","v":1,"g":0.0,"p":1,"a":["gloria"]},{"n":"👑🦂💎🇭🇳 Iconic 🐙 beauty","h":"","v":1,"g":0.0,"p":1,"a":["iconicbeauty"]},{"n":"🕷️yosanny","h":"","v":1,"g":0.0,"p":1,"a":["yosanny"]},{"n":"🪬 ♡ bidi","h":"","v":1,"g":0.0,"p":1,"a":["bidi"]},{"n":"$ElJalisco59$","h":"","v":0,"g":0.0,"p":1,"a":["eljalisco59"]},{"n":"72_flowers","h":"","v":0,"g":0.0,"p":1,"a":["72flowers"]},{"n":"@MAWEST LLC🇺🇸💨🔥","h":"","v":0,"g":0.0,"p":1,"a":["mawestllc"]},{"n":"@sandrinefinds","h":"","v":0,"g":0.0,"p":1,"a":["sandrinefinds"]},{"n":"Abby","h":"","v":0,"g":0.0,"p":1,"a":["abby"]},{"n":"Abby Glow🐣🐦‍🔥","h":"","v":0,"g":0.0,"p":1,"a":["abbyglow"]},{"n":"Adrienne💌🫶🏼","h":"","v":0,"g":0.0,"p":2,"a":["adrienne","adrienneapproved"]},{"n":"Alejandra Ventura","h":"","v":0,"g":0.0,"p":1,"a":["alejandraventura"]},{"n":"Alekatt","h":"","v":0,"g":0.0,"p":1,"a":["alekatt"]},{"n":"alexandnickcars","h":"","v":0,"g":0.0,"p":1,"a":["alexandnickcars"]},{"n":"Alexia","h":"","v":0,"g":0.0,"p":1,"a":["alexia"]},{"n":"Alfredorooliva","h":"","v":0,"g":0.0,"p":1,"a":["alfredorooliva"]},{"n":"Alisha Sylvestri🥉","h":"","v":0,"g":0.0,"p":2,"a":["alishasylvestri"]},{"n":"Alivis🤍","h":"","v":0,"g":0.0,"p":1,"a":["alivis"]},{"n":"allieandco.life","h":"","v":0,"g":0.0,"p":1,"a":["allieandcolife"]},{"n":"Alma 🌹💙💫","h":"","v":0,"g":0.0,"p":2,"a":["alma"]},{"n":"Alzheimer’s Prevention Project","h":"","v":0,"g":0.0,"p":1,"a":["alzheimerspreventionproject"]},{"n":"Amanda 🤍","h":"","v":0,"g":0.0,"p":1,"a":["amanda"]},{"n":"amberascontentcreator1","h":"","v":0,"g":0.0,"p":1,"a":["amberascontentcreator1"]},{"n":"America morgan","h":"","v":0,"g":0.0,"p":1,"a":["americamorgan"]},{"n":"Ana.juliaponc","h":"","v":0,"g":0.0,"p":1,"a":["anajuliaponc"]},{"n":"Anastasia 🤍","h":"","v":0,"g":0.0,"p":1,"a":["anastasia"]},{"n":"andrealoreh21|UGC✨","h":"","v":0,"g":0.0,"p":1,"a":["andrealoreh21ugc"]},{"n":"AngelP","h":"","v":0,"g":0.0,"p":1,"a":["angelp"]},{"n":"angelyvargas3","h":"","v":0,"g":0.0,"p":1,"a":["angelyvargas3"]},{"n":"angieinpa","h":"","v":0,"g":0.0,"p":1,"a":["angieinpa"]},{"n":"Anilu","h":"","v":0,"g":0.0,"p":1,"a":["anilu"]},{"n":"Anisa 🛍️","h":"","v":0,"g":0.0,"p":3,"a":["anisa"]},{"n":"Annie🦋","h":"","v":0,"g":0.0,"p":1,"a":["annie"]},{"n":"Ash B","h":"","v":0,"g":0.0,"p":1,"a":["ashb"]},{"n":"Ashley Beaird ❤️","h":"","v":0,"g":0.0,"p":2,"a":["ashleybeaird"]},{"n":"Ashley- mom of girls 📚🎃","h":"","v":0,"g":0.0,"p":1,"a":["ashleymomofgirls"]},{"n":"ashleythesahmof6","h":"","v":0,"g":0.0,"p":1,"a":["ashleythesahmof6"]},{"n":"ATHENA PARIS","h":"","v":0,"g":0.0,"p":2,"a":["athenaparis"]},{"n":"autohub","h":"","v":0,"g":0.0,"p":1,"a":["autohub"]},{"n":"AVIANA, BSN, RN | I’m a Mommy","h":"","v":0,"g":0.0,"p":1,"a":["avianabsnrnimamommy"]},{"n":"avs","h":"","v":0,"g":0.0,"p":1,"a":["avs"]},{"n":"AWells88","h":"","v":0,"g":0.0,"p":1,"a":["awells88"]},{"n":"BabybooMandy","h":"","v":0,"g":0.0,"p":1,"a":["babyboomandy"]},{"n":"Bambi","h":"","v":0,"g":0.0,"p":1,"a":["bambi"]},{"n":"barbybee15","h":"","v":0,"g":0.0,"p":1,"a":["barbybee15"]},{"n":"Baylee✨","h":"","v":0,"g":0.0,"p":2,"a":["baylee"]},{"n":"Beatriz ✨","h":"","v":0,"g":0.0,"p":1,"a":["beatriz"]},{"n":"BeeJay | Mom of 2 | TTS","h":"","v":0,"g":0.0,"p":1,"a":["beejaymomof2tts"]},{"n":"Belen.","h":"","v":0,"g":0.0,"p":1,"a":["belen"]},{"n":"beneony0115","h":"","v":0,"g":0.0,"p":1,"a":["beneony0115"]},{"n":"Beneony70","h":"","v":0,"g":0.0,"p":4,"a":["beneony70"]},{"n":"besthealthfinds","h":"","v":0,"g":0.0,"p":3,"a":["besthealthfinds"]},{"n":"betterdays.lilly","h":"","v":0,"g":0.0,"p":1,"a":["betterdayslilly"]},{"n":"Betty","h":"","v":0,"g":0.0,"p":1,"a":["betty"]},{"n":"Betty Gomez","h":"","v":0,"g":0.0,"p":1,"a":["bettygomez"]},{"n":"Betty Pupo","h":"","v":0,"g":0.0,"p":1,"a":["bettypupo"]},{"n":"Bobby Boyd","h":"","v":0,"g":0.0,"p":1,"a":["bobbyboyd","bobbyboydliving"]},{"n":"BodyByNixx","h":"","v":0,"g":0.0,"p":1,"a":["bodybynixx"]},{"n":"bookrojas","h":"","v":0,"g":0.0,"p":1,"a":["bookrojas"]},{"n":"Brady2x","h":"","v":0,"g":0.0,"p":1,"a":["brady2x"]},{"n":"Brayden Taft","h":"","v":0,"g":0.0,"p":1,"a":["braydentaft"]},{"n":"Breanna 🦋 Beauty & Lifestyle","h":"","v":0,"g":0.0,"p":1,"a":["breannabeautylifestyle"]},{"n":"Bri","h":"","v":0,"g":0.0,"p":1,"a":["bri"]},{"n":"Brookie Buys","h":"","v":0,"g":0.0,"p":3,"a":["brookiebuys"]},{"n":"Caligan❌G7","h":"","v":0,"g":0.0,"p":1,"a":["caligang7"]},{"n":"Camila","h":"","v":0,"g":0.0,"p":1,"a":["camila"]},{"n":"Campbell's Funhouse #NLCN","h":"","v":0,"g":0.0,"p":1,"a":["campbellsfunhousenlcn"]},{"n":"caneli445","h":"","v":0,"g":0.0,"p":25,"a":["caneli445"]},{"n":"CAPRI","h":"","v":0,"g":0.0,"p":1,"a":["capri"]},{"n":"Carl","h":"","v":0,"g":0.0,"p":1,"a":["carl"]},{"n":"cecedailyfinds🌀","h":"","v":0,"g":0.0,"p":2,"a":["cecedailyfinds"]},{"n":"Ceci | Real Talk ✨","h":"","v":0,"g":0.0,"p":1,"a":["cecirealtalk"]},{"n":"cgomy99","h":"","v":0,"g":0.0,"p":1,"a":["cgomy99"]},{"n":"Chan & Lo","h":"","v":0,"g":0.0,"p":1,"a":["chanlo"]},{"n":"ChaosButCozy","h":"","v":0,"g":0.0,"p":1,"a":["chaosbutcozy"]},{"n":"Charlotte Webb","h":"","v":0,"g":0.0,"p":1,"a":["charlottewebb"]},{"n":"chasityfisher","h":"","v":0,"g":0.0,"p":1,"a":["chasityfisher"]},{"n":"Cherish ✨","h":"","v":0,"g":0.0,"p":1,"a":["cherish"]},{"n":"Chill.vibes.daily","h":"","v":0,"g":0.0,"p":1,"a":["chillvibesdaily"]},{"n":"Christine | Life in Color","h":"","v":0,"g":0.0,"p":1,"a":["christinelifeincolor"]},{"n":"Christy","h":"","v":0,"g":0.0,"p":1,"a":["christy"]},{"n":"christytoddpeek","h":"","v":0,"g":0.0,"p":1,"a":["christytoddpeek"]},{"n":"Christytpeek","h":"","v":0,"g":0.0,"p":2,"a":["christytpeek"]},{"n":"claudia_deras_","h":"","v":0,"g":0.0,"p":3,"a":["claudiaderas"]},{"n":"Coach Royal👑✨","h":"","v":0,"g":0.0,"p":1,"a":["coachroyal"]},{"n":"coltonhaynes","h":"","v":0,"g":0.0,"p":4,"a":["coltonhaynes"]},{"n":"conversionbean","h":"","v":0,"g":0.0,"p":1,"a":["conversionbean"]},{"n":"Cookie🍪","h":"","v":0,"g":0.0,"p":1,"a":["cookie"]},{"n":"Corie1111💜🫶🏽🦋 TIKTOK SHOP","h":"","v":0,"g":0.0,"p":1,"a":["corie1111tiktokshop"]},{"n":"CreateThriveLA","h":"","v":0,"g":0.0,"p":1,"a":["createthrivela"]},{"n":"CreativeSoul❌️","h":"","v":0,"g":0.0,"p":1,"a":["creativesoul"]},{"n":"Da hair hoochie","h":"","v":0,"g":0.0,"p":1,"a":["dahairhoochie"]},{"n":"Dailubys","h":"","v":0,"g":0.0,"p":1,"a":["dailubys"]},{"n":"Dama Beauty Studio","h":"","v":0,"g":0.0,"p":23,"a":["damabeautystudio"]},{"n":"Daniel503","h":"","v":0,"g":0.0,"p":1,"a":["daniel503"]},{"n":"danygonzalezzu","h":"","v":0,"g":0.0,"p":1,"a":["danygonzalezzu"]},{"n":"Daphadeals","h":"","v":0,"g":0.0,"p":1,"a":["daphadeals"]},{"n":"darla 🩹","h":"","v":0,"g":0.0,"p":1,"a":["darla"]},{"n":"Dary💫","h":"","v":0,"g":0.0,"p":1,"a":["dary"]},{"n":"davidyapss","h":"","v":0,"g":0.0,"p":3,"a":["davidyapss"]},{"n":"Dawna Lee","h":"","v":0,"g":0.0,"p":2,"a":["dawnalee"]},{"n":"denisseeeprz","h":"","v":0,"g":0.0,"p":2,"a":["denisseeeprz"]},{"n":"Des Unique 😘","h":"","v":0,"g":0.0,"p":1,"a":["desunique"]},{"n":"DesiEssence","h":"","v":0,"g":0.0,"p":3,"a":["desiessence"]},{"n":"Destiney Lucero","h":"","v":0,"g":0.0,"p":2,"a":["destineylucero"]},{"n":"Dey","h":"","v":0,"g":0.0,"p":2,"a":["dey"]},{"n":"DianaRM","h":"","v":0,"g":0.0,"p":3,"a":["dianarm"]},{"n":"Diana| UGC| TTS","h":"","v":0,"g":0.0,"p":1,"a":["dianaugctts"]},{"n":"discountcomp","h":"","v":0,"g":0.0,"p":1,"a":["discountcomp"]},{"n":"DJ Bossman Torrillo","h":"","v":0,"g":0.0,"p":1,"a":["djbossmantorrillo"]},{"n":"Dr. Rox Holistic Health","h":"","v":0,"g":0.0,"p":2,"a":["drroxholistichealth"]},{"n":"edithc.t","h":"","v":0,"g":0.0,"p":1,"a":["edithct"]},{"n":"eeeeee","h":"","v":0,"g":0.0,"p":1,"a":["eeeeee"]},{"n":"Elevateyourlife","h":"","v":0,"g":0.0,"p":1,"a":["elevateyourlife"]},{"n":"Elianny | Lifestyle","h":"","v":0,"g":0.0,"p":1,"a":["eliannylifestyle"]},{"n":"ELIZABETH","h":"","v":0,"g":0.0,"p":2,"a":["elizabeth"]},{"n":"emilsagarcia90","h":"","v":0,"g":0.0,"p":1,"a":["emilsagarcia90"]},{"n":"emily","h":"","v":0,"g":0.0,"p":1,"a":["emily"]},{"n":"Enso adonus","h":"","v":0,"g":0.0,"p":1,"a":["ensoadonus"]},{"n":"Erica 💕","h":"","v":0,"g":0.0,"p":1,"a":["erica"]},{"n":"Erika Lauterbach TEACHER","h":"","v":0,"g":0.0,"p":1,"a":["erikalauterbachteacher"]},{"n":"erisa","h":"","v":0,"g":0.0,"p":3,"a":["erisa"]},{"n":"Estrellita Díaz🌻","h":"","v":0,"g":0.0,"p":1,"a":["estrellitadiaz"]},{"n":"Faith💚","h":"","v":0,"g":0.0,"p":1,"a":["faith"]},{"n":"Fancyranger34","h":"","v":0,"g":0.0,"p":1,"a":["fancyranger34"]},{"n":"Fany🔥","h":"","v":0,"g":0.0,"p":1,"a":["fany"]},{"n":"FINDSbyNIKKY","h":"","v":0,"g":0.0,"p":1,"a":["findsbynikky"]},{"n":"Fiorella Detalles 🇩🇴","h":"","v":0,"g":0.0,"p":1,"a":["fiorelladetalles"]},{"n":"FLOR 🌸 MEXICANA 🇲🇽","h":"","v":0,"g":0.0,"p":1,"a":["flormexicana"]},{"n":"Found by Chey","h":"","v":0,"g":0.0,"p":1,"a":["foundbychey"]},{"n":"Francisbeauty5","h":"","v":0,"g":0.0,"p":1,"a":["francisbeauty5"]},{"n":"Gabriel.natural","h":"","v":0,"g":0.0,"p":1,"a":["gabrielnatural"]},{"n":"Gaby Reaño","h":"","v":0,"g":0.0,"p":1,"a":["gabyreano"]},{"n":"Glitter It All","h":"","v":0,"g":0.0,"p":1,"a":["glitteritall"]},{"n":"God's Dwelling Place","h":"","v":0,"g":0.0,"p":1,"a":["godsdwellingplace"]},{"n":"Goddess❌ 🧿F Divine Love","h":"","v":0,"g":0.0,"p":1,"a":["goddessfdivinelove"]},{"n":"Gretel Shop 🧿💎","h":"","v":0,"g":0.0,"p":1,"a":["gretelshop"]},{"n":"Gris Rey / Reviews","h":"","v":0,"g":0.0,"p":1,"a":["grisreyreviews"]},{"n":"Group 7 pretty figure","h":"","v":0,"g":0.0,"p":1,"a":["group7prettyfigure"]},{"n":"Gwen | UGC Creator","h":"","v":0,"g":0.0,"p":1,"a":["gwenugccreator"]},{"n":"Harley Pasternak MSc.","h":"","v":0,"g":0.0,"p":2,"a":["harleypasternakmsc"]},{"n":"Heather K","h":"","v":0,"g":0.0,"p":1,"a":["heatherk"]},{"n":"Heather |TTS","h":"","v":0,"g":0.0,"p":3,"a":["heathertts"]},{"n":"Heather 🩷","h":"","v":0,"g":0.0,"p":1,"a":["heather"]},{"n":"Herfavefinds","h":"","v":0,"g":0.0,"p":3,"a":["herfavefinds"]},{"n":"Hernández21","h":"","v":0,"g":0.0,"p":1,"a":["hernandez21"]},{"n":"hikatbeauty","h":"","v":0,"g":0.0,"p":1,"a":["hikatbeauty"]},{"n":"Holly🧚🏽hurricane👮🇨🇲🇺🇸","h":"","v":0,"g":0.0,"p":1,"a":["hollyhurricane"]},{"n":"Hortencia peñaloza","h":"","v":0,"g":0.0,"p":1,"a":["hortenciapenaloza"]},{"n":"hot.findsss","h":"","v":0,"g":0.0,"p":3,"a":["hotfindsss"]},{"n":"humbled_mamabear","h":"","v":0,"g":0.0,"p":1,"a":["humbledmamabear"]},{"n":"Huskyforders","h":"","v":0,"g":0.0,"p":1,"a":["huskyforders"]},{"n":"isaiahs_items","h":"","v":0,"g":0.0,"p":5,"a":["isaiahsitems"]},{"n":"its_ashleygrey2","h":"","v":0,"g":0.0,"p":1,"a":["itsashleygrey2"]},{"n":"itz.nattty1","h":"","v":0,"g":0.0,"p":1,"a":["itznattty1"]},{"n":"It’s Pakawadee ✨","h":"","v":0,"g":0.0,"p":1,"a":["itspakawadee"]},{"n":"Ivy","h":"","v":0,"g":0.0,"p":2,"a":["ivy"]},{"n":"Jackie","h":"","v":0,"g":0.0,"p":1,"a":["jackie"]},{"n":"Janeth Salazar","h":"","v":0,"g":0.0,"p":2,"a":["janethsalazar"]},{"n":"Janeth❤️‍🔥FA🇭🇳nissi1125","h":"","v":0,"g":0.0,"p":1,"a":["janethfanissi1125"]},{"n":"janiece 💕","h":"","v":0,"g":0.0,"p":1,"a":["janiece"]},{"n":"Jenna","h":"","v":0,"g":0.0,"p":1,"a":["jenna"]},{"n":"JennyLeon♡Vibes","h":"","v":0,"g":0.0,"p":1,"a":["jennyleonvibes"]},{"n":"Jess 🖤","h":"","v":0,"g":0.0,"p":1,"a":["jess"]},{"n":"Jess 🧿 Aka SashaBaron35 🥰","h":"","v":0,"g":0.0,"p":1,"a":["jessakasashabaron35"]},{"n":"Jessica","h":"","v":0,"g":0.0,"p":1,"a":["jessica"]},{"n":"Jessica Robledo","h":"","v":0,"g":0.0,"p":1,"a":["jessicarobledo"]},{"n":"JJBrothers0809 🌀","h":"","v":0,"g":0.0,"p":1,"a":["jjbrothers0809"]},{"n":"joannsettle","h":"","v":0,"g":0.0,"p":1,"a":["joannsettle"]},{"n":"Jody tries it","h":"","v":0,"g":0.0,"p":1,"a":["jodytriesit"]},{"n":"Jonybateman","h":"","v":0,"g":0.0,"p":1,"a":["jonybateman"]},{"n":"joprimefinds","h":"","v":0,"g":0.0,"p":3,"a":["joprimefinds"]},{"n":"jordan leshell ✰","h":"","v":0,"g":0.0,"p":1,"a":["jordanleshell"]},{"n":"Joslynnicole","h":"","v":0,"g":0.0,"p":1,"a":["joslynnicole"]},{"n":"Joy's Shop 💕🇨🇴","h":"","v":0,"g":0.0,"p":1,"a":["joysshop"]},{"n":"Juan c Jesus","h":"","v":0,"g":0.0,"p":1,"a":["juancjesus"]},{"n":"juana archaga","h":"","v":0,"g":0.0,"p":2,"a":["juanaarchaga"]},{"n":"Juana la cubana","h":"","v":0,"g":0.0,"p":1,"a":["juanalacubana"]},{"n":"jucorreashop","h":"","v":0,"g":0.0,"p":1,"a":["jucorreashop"]},{"n":"JULIANNA🧚🏼‍♀️","h":"","v":0,"g":0.0,"p":1,"a":["julianna"]},{"n":"julieta bloom","h":"","v":0,"g":0.0,"p":1,"a":["julietabloom"]},{"n":"Jvcabby🤍","h":"","v":0,"g":0.0,"p":1,"a":["jvcabby","jvcabbyy"]},{"n":"K Marie","h":"","v":0,"g":0.0,"p":1,"a":["kmarie"]},{"n":"Kabore Kabore","h":"","v":0,"g":0.0,"p":1,"a":["kaborekabore"]},{"n":"Kala |Girl Mom |All the things","h":"","v":0,"g":0.0,"p":1,"a":["kalagirlmomallthethings"]},{"n":"Karen","h":"","v":0,"g":0.0,"p":1,"a":["karen"]},{"n":"Karen | Anti-Trad SAHMom","h":"","v":0,"g":0.0,"p":1,"a":["karenantitradsahmom"]},{"n":"Karin/PoderFemenino","h":"","v":0,"g":0.0,"p":4,"a":["karinpoderfemenino"]},{"n":"Karissa🌻 Girl Mama~Book lover","h":"","v":0,"g":0.0,"p":1,"a":["karissagirlmamabooklover"]},{"n":"Karla Michelle","h":"","v":0,"g":0.0,"p":1,"a":["karlamichelle"]},{"n":"Katrina | Working mama🩵","h":"","v":0,"g":0.0,"p":2,"a":["katrinaworkingmama"]},{"n":"Katy UGC","h":"","v":0,"g":0.0,"p":1,"a":["katyugc"]},{"n":"KaylasCorner","h":"","v":0,"g":0.0,"p":1,"a":["kaylascorner"]},{"n":"KeeKee Shop Finds 🛍👜","h":"","v":0,"g":0.0,"p":1,"a":["keekeeshopfinds"]},{"n":"Kelli","h":"","v":0,"g":0.0,"p":2,"a":["kelli"]},{"n":"Kellie’s Simple Life","h":"","v":0,"g":0.0,"p":1,"a":["kelliessimplelife"]},{"n":"Keyla  zeron","h":"","v":0,"g":0.0,"p":1,"a":["keylazeron"]},{"n":"keySheree","h":"","v":0,"g":0.0,"p":2,"a":["keysheree"]},{"n":"Kheenaa💃✨","h":"","v":0,"g":0.0,"p":1,"a":["kheenaa"]},{"n":"Kingsquadmama","h":"","v":0,"g":0.0,"p":3,"a":["kingsquadmama"]},{"n":"kiss priss","h":"","v":0,"g":0.0,"p":1,"a":["kisspriss"]},{"n":"Kota!","h":"","v":0,"g":0.0,"p":1,"a":["kota"]},{"n":"Kristi","h":"","v":0,"g":0.0,"p":1,"a":["kristi"]},{"n":"Kryptom Family • TTS","h":"","v":0,"g":0.0,"p":1,"a":["kryptomfamilytts"]},{"n":"Kylie G.🦋","h":"","v":0,"g":0.0,"p":1,"a":["kylieg"]},{"n":"K💜","h":"","v":0,"g":0.0,"p":2,"a":["k"]},{"n":"La mamá de Elliot❤️","h":"","v":0,"g":0.0,"p":1,"a":["lamamadeelliot"]},{"n":"La Mejor Salud🧉🪴","h":"","v":0,"g":0.0,"p":3,"a":["lamejorsalud"]},{"n":"La vida es bella","h":"","v":0,"g":0.0,"p":1,"a":["lavidaesbella"]},{"n":"La_china90","h":"","v":0,"g":0.0,"p":1,"a":["lachina90"]},{"n":"LadiesFirst Aroma","h":"","v":0,"g":0.0,"p":1,"a":["ladiesfirstaroma"]},{"n":"Lady Lex","h":"","v":0,"g":0.0,"p":1,"a":["ladylex"]},{"n":"LaMamichula","h":"","v":0,"g":0.0,"p":1,"a":["lamamichula"]},{"n":"Lauren Adams","h":"","v":0,"g":0.0,"p":1,"a":["laurenadams"]},{"n":"lavi_dearmas","h":"","v":0,"g":0.0,"p":1,"a":["lavidearmas"]},{"n":"lazo0026","h":"","v":0,"g":0.0,"p":1,"a":["lazo0026"]},{"n":"LeticiaCastillo","h":"","v":0,"g":0.0,"p":1,"a":["leticiacastillo"]},{"n":"Liesl2014 TTS HOME & FAMILY","h":"","v":0,"g":0.0,"p":1,"a":["liesl2014ttshomefamily"]},{"n":"LifeviaLily","h":"","v":0,"g":0.0,"p":1,"a":["lifevialily"]},{"n":"lifevshop","h":"","v":0,"g":0.0,"p":4,"a":["lifevshop"]},{"n":"lifewithaandree","h":"","v":0,"g":0.0,"p":3,"a":["lifewithaandree"]},{"n":"LifewithDeirdre","h":"","v":0,"g":0.0,"p":1,"a":["lifewithdeirdre"]},{"n":"Lilla no bulto","h":"","v":0,"g":0.0,"p":1,"a":["lillanobulto"]},{"n":"Lilly Begha😍","h":"","v":0,"g":0.0,"p":1,"a":["lillybegha"]},{"n":"Lily la Cubanita 🇨🇺","h":"","v":0,"g":0.0,"p":1,"a":["lilylacubanita"]},{"n":"Lisalove1978","h":"","v":0,"g":0.0,"p":1,"a":["lisalove1978"]},{"n":"lisney💌 | UGC Creator","h":"","v":0,"g":0.0,"p":1,"a":["lisneyugccreator"]},{"n":"LISS MARTÍNEZ🇳🇮🇪🇦🇺🇲🛍️","h":"","v":0,"g":0.0,"p":1,"a":["lissmartinez"]},{"n":"Literal Black Widow-Solo Mom 3","h":"","v":0,"g":0.0,"p":1,"a":["literalblackwidowsolomom3"]},{"n":"Liv","h":"","v":0,"g":0.0,"p":1,"a":["liv"]},{"n":"longisland_girl","h":"","v":0,"g":0.0,"p":1,"a":["longislandgirl"]},{"n":"Lopez69","h":"","v":0,"g":0.0,"p":1,"a":["lopez69"]},{"n":"Lorraine ❌️","h":"","v":0,"g":0.0,"p":4,"a":["lorraine"]},{"n":"Lucia💕","h":"","v":0,"g":0.0,"p":1,"a":["lucia"]},{"n":"Lydia_blessed_90","h":"","v":0,"g":0.0,"p":1,"a":["lydiablessed90"]},{"n":"Maile l  Beauty After 40","h":"","v":0,"g":0.0,"p":1,"a":["mailelbeautyafter40"]},{"n":"Mama Jaz ♡","h":"","v":0,"g":0.0,"p":1,"a":["mamajaz"]},{"n":"Mama Rai 💕💁🏾‍♀️","h":"","v":0,"g":0.0,"p":1,"a":["mamarai"]},{"n":"MAMA💕DE💕CUATES/FINDS","h":"","v":0,"g":0.0,"p":2,"a":["mamadecuatesfinds"]},{"n":"Mandy | SAHM TTS","h":"","v":0,"g":0.0,"p":1,"a":["mandysahmtts"]},{"n":"MaravillaM💕","h":"","v":0,"g":0.0,"p":1,"a":["maravillam"]},{"n":"Maria autism mama","h":"","v":0,"g":0.0,"p":1,"a":["mariaautismmama"]},{"n":"Mari✨","h":"","v":0,"g":0.0,"p":1,"a":["mari"]},{"n":"marjoriedesdecero","h":"","v":0,"g":0.0,"p":1,"a":["marjoriedesdecero"]},{"n":"maruchy10","h":"","v":0,"g":0.0,"p":1,"a":["maruchy10"]},{"n":"Mary-Kate","h":"","v":0,"g":0.0,"p":1,"a":["marykate"]},{"n":"Maryhappy","h":"","v":0,"g":0.0,"p":1,"a":["maryhappy"]},{"n":"Mashke","h":"","v":0,"g":0.0,"p":1,"a":["mashke"]},{"n":"MayCan","h":"","v":0,"g":0.0,"p":1,"a":["maycan"]},{"n":"maycewcarter","h":"","v":0,"g":0.0,"p":1,"a":["maycewcarter"]},{"n":"mercercaiden","h":"","v":0,"g":0.0,"p":1,"a":["mercercaiden"]},{"n":"Merna","h":"","v":0,"g":0.0,"p":1,"a":["merna"]},{"n":"Mersy ☥","h":"","v":0,"g":0.0,"p":1,"a":["mersy"]},{"n":"Michelle | Boy Mama☕","h":"","v":0,"g":0.0,"p":2,"a":["michelleboymama"]},{"n":"Michoacana1980🛍️","h":"","v":0,"g":0.0,"p":1,"a":["michoacana1980"]},{"n":"Mikayla 💕 | Tik Tok Shop","h":"","v":0,"g":0.0,"p":1,"a":["mikaylatiktokshop"]},{"n":"Millie UGC Creator","h":"","v":0,"g":0.0,"p":1,"a":["millieugccreator"]},{"n":"miranda","h":"","v":0,"g":0.0,"p":1,"a":["miranda"]},{"n":"Miranda 🤸🏼‍♀️","h":"","v":0,"g":0.0,"p":1,"a":["miranda"]},{"n":"Mo | Philly Content Creator","h":"","v":0,"g":0.0,"p":1,"a":["mophillycontentcreator"]},{"n":"Monica OMCT 💜","h":"","v":0,"g":0.0,"p":2,"a":["monicaomct"]},{"n":"Monica | Lifestyle content ♥︎","h":"","v":0,"g":0.0,"p":1,"a":["monicalifestylecontent"]},{"n":"Ms Ellie","h":"","v":0,"g":0.0,"p":2,"a":["msellie"]},{"n":"Ms. B","h":"","v":0,"g":0.0,"p":1,"a":["msb"]},{"n":"myasiachanel","h":"","v":0,"g":0.0,"p":1,"a":["myasiachanel"]},{"n":"nasroali277","h":"","v":0,"g":0.0,"p":1,"a":["nasroali277"]},{"n":"Nate Robinson","h":"","v":0,"g":0.0,"p":4,"a":["naterobinson"]},{"n":"nathalierodriguezl","h":"","v":0,"g":0.0,"p":1,"a":["nathalierodriguezl"]},{"n":"Neecey B Lifestyle","h":"","v":0,"g":0.0,"p":3,"a":["neeceyblifestyle"]},{"n":"Nelis Guerra","h":"","v":0,"g":0.0,"p":1,"a":["nelisguerra"]},{"n":"NINEL 🦅🦅","h":"","v":0,"g":0.0,"p":1,"a":["ninel"]},{"n":"Nirmala Ale","h":"","v":0,"g":0.0,"p":1,"a":["nirmalaale"]},{"n":"Noah","h":"","v":0,"g":0.0,"p":1,"a":["noah"]},{"n":"Noneyabusiness","h":"","v":0,"g":0.0,"p":1,"a":["noneyabusiness"]},{"n":"nutrivita_","h":"","v":0,"g":0.0,"p":25,"a":["nutrivita"]},{"n":"OALlegacykeepers","h":"","v":0,"g":0.0,"p":1,"a":["oallegacykeepers"]},{"n":"ohio_simplejulie","h":"","v":0,"g":0.0,"p":1,"a":["ohiosimplejulie"]},{"n":"One way","h":"","v":0,"g":0.0,"p":2,"a":["oneway"]},{"n":"OrganicallyUnique","h":"","v":0,"g":0.0,"p":1,"a":["organicallyunique"]},{"n":"Oriana en tik tok","h":"","v":0,"g":0.0,"p":1,"a":["orianaentiktok"]},{"n":"Paty🫀🇪🇨","h":"","v":0,"g":0.0,"p":1,"a":["paty"]},{"n":"Progress G💜💜 🇺🇸🇺🇸🇺🇸","h":"","v":0,"g":0.0,"p":1,"a":["progressg"]},{"n":"qazshtvauqq","h":"","v":0,"g":0.0,"p":7,"a":["qazshtvauqq"]},{"n":"QUEEN GOGO BEAUTY WORLD LLC 🌏","h":"","v":0,"g":0.0,"p":1,"a":["queengogobeautyworldllc"]},{"n":"Queen.lovesyou.2","h":"","v":0,"g":0.0,"p":2,"a":["queenlovesyou2"]},{"n":"queenofbambili","h":"","v":0,"g":0.0,"p":1,"a":["queenofbambili"]},{"n":"Rachael🩵Mama✨","h":"","v":0,"g":0.0,"p":1,"a":["rachaelmama"]},{"n":"Rachel","h":"","v":0,"g":0.0,"p":3,"a":["rachel"]},{"n":"Rachou♓️shello❣️","h":"","v":0,"g":0.0,"p":1,"a":["rachoushello"]},{"n":"raerob1","h":"","v":0,"g":0.0,"p":4,"a":["raerob1"]},{"n":"Rahil","h":"","v":0,"g":0.0,"p":1,"a":["rahil"]},{"n":"RAINEY 🎀🩺 || NURSE + LIFE","h":"","v":0,"g":0.0,"p":1,"a":["raineynurselife"]},{"n":"Rajendra shrestha","h":"","v":0,"g":0.0,"p":1,"a":["rajendrashrestha"]},{"n":"Ramona Bludau","h":"","v":0,"g":0.0,"p":1,"a":["ramonabludau"]},{"n":"Rcfans1991 Pokémon","h":"","v":0,"g":0.0,"p":1,"a":["rcfans1991pokemon"]},{"n":"Rebecca","h":"","v":0,"g":0.0,"p":3,"a":["rebecca","rebeccatuesday"]},{"n":"Rebekah💖/under construction","h":"","v":0,"g":0.0,"p":1,"a":["rebekahunderconstruction"]},{"n":"Relia | Motherhood+Lifestyle","h":"","v":0,"g":0.0,"p":1,"a":["reliamotherhoodlifestyle"]},{"n":"Reviews2lit","h":"","v":0,"g":0.0,"p":4,"a":["reviews2lit"]},{"n":"reviewsbyvon","h":"","v":0,"g":0.0,"p":4,"a":["reviewsbyvon"]},{"n":"Reyna latina 🫶🤩","h":"","v":0,"g":0.0,"p":1,"a":["reynalatina"]},{"n":"Reyna PM👑","h":"","v":0,"g":0.0,"p":1,"a":["reynapm"]},{"n":"RMAU SHOP1904","h":"","v":0,"g":0.0,"p":1,"a":["rmaushop1904"]},{"n":"Rosalbys","h":"","v":0,"g":0.0,"p":7,"a":["rosalbys"]},{"n":"RosiiTipsBeauty","h":"","v":0,"g":0.0,"p":1,"a":["rosiitipsbeauty"]},{"n":"ruby.1.shop","h":"","v":0,"g":0.0,"p":3,"a":["ruby1shop"]},{"n":"Sabrina Lane791❌🥉","h":"","v":0,"g":0.0,"p":1,"a":["sabrinalane791"]},{"n":"Sam | TTS","h":"","v":0,"g":0.0,"p":3,"a":["samtts"]},{"n":"samithebami2026","h":"","v":0,"g":0.0,"p":3,"a":["samithebami2026"]},{"n":"SESHYRABYDAINERIS","h":"","v":0,"g":0.0,"p":1,"a":["seshyrabydaineris"]},{"n":"Sharla | RN 🩺| 🌼","h":"","v":0,"g":0.0,"p":1,"a":["sharlarn"]},{"n":"Shaunakb03","h":"","v":0,"g":0.0,"p":1,"a":["shaunakb03"]},{"n":"Shawn","h":"","v":0,"g":0.0,"p":1,"a":["shawn"]},{"n":"Sheriece","h":"","v":0,"g":0.0,"p":4,"a":["sheriece"]},{"n":"shopping is fun","h":"","v":0,"g":0.0,"p":4,"a":["shoppingisfun"]},{"n":"shoppingwithfaithh","h":"","v":0,"g":0.0,"p":2,"a":["shoppingwithfaithh"]},{"n":"SiaFlipsIt🧩","h":"","v":0,"g":0.0,"p":1,"a":["siaflipsit"]},{"n":"Silvana | UGC Creator","h":"","v":0,"g":0.0,"p":28,"a":["silvanaugccreator"]},{"n":"simply me","h":"","v":0,"g":0.0,"p":1,"a":["simplyme"]},{"n":"Sonia","h":"","v":0,"g":0.0,"p":1,"a":["sonia"]},{"n":"Sonia Argueta0872","h":"","v":0,"g":0.0,"p":1,"a":["soniaargueta0872"]},{"n":"soniaargueta123","h":"","v":0,"g":0.0,"p":1,"a":["soniaargueta123"]},{"n":"Sophia 🍂","h":"","v":0,"g":0.0,"p":1,"a":["sophia"]},{"n":"SoyGuz 🔥","h":"","v":0,"g":0.0,"p":1,"a":["soyguz","soyguz31"]},{"n":"Steff","h":"","v":0,"g":0.0,"p":4,"a":["steff"]},{"n":"Stephanie 🖤🤍","h":"","v":0,"g":0.0,"p":1,"a":["stephanie"]},{"n":"Stina Finds","h":"","v":0,"g":0.0,"p":1,"a":["stinafinds"]},{"n":"StrongBoyMama💛😎🩵","h":"","v":0,"g":0.0,"p":2,"a":["strongboymama"]},{"n":"Sumeeta","h":"","v":0,"g":0.0,"p":1,"a":["sumeeta"]},{"n":"Summer 🌷","h":"","v":0,"g":0.0,"p":1,"a":["summer"]},{"n":"Sunflower The Social Medium","h":"","v":0,"g":0.0,"p":1,"a":["sunflowerthesocialmedium"]},{"n":"Sunnie Marie 🌀","h":"","v":0,"g":0.0,"p":4,"a":["sunniemarie","sunniemarie017"]},{"n":"Susan’s favorite things 💕","h":"","v":0,"g":0.0,"p":2,"a":["susansfavoritethings"]},{"n":"Sweet and sassy❤️🔐💍❌","h":"","v":0,"g":0.0,"p":1,"a":["sweetandsassy"]},{"n":"Tae | Your Wellness Bestie 🌷","h":"","v":0,"g":0.0,"p":2,"a":["taeyourwellnessbestie"]},{"n":"Tammie","h":"","v":0,"g":0.0,"p":2,"a":["tammie"]},{"n":"Tara","h":"","v":0,"g":0.0,"p":3,"a":["tara"]},{"n":"Tati🥰","h":"","v":0,"g":0.0,"p":4,"a":["tati"]},{"n":"Taybay ✝️💙🥉","h":"","v":0,"g":0.0,"p":2,"a":["taybay"]},{"n":"TDean 🥉❌","h":"","v":0,"g":0.0,"p":1,"a":["tdean"]},{"n":"The Beauty Plug","h":"","v":0,"g":0.0,"p":3,"a":["thebeautyplug"]},{"n":"The Goldens of Salem","h":"","v":0,"g":0.0,"p":1,"a":["thegoldensofsalem"]},{"n":"The Great Ages of Antiquity","h":"","v":0,"g":0.0,"p":1,"a":["thegreatagesofantiquity"]},{"n":"The Joy in Things","h":"","v":0,"g":0.0,"p":1,"a":["thejoyinthings"]},{"n":"The Prioletti Fam","h":"","v":0,"g":0.0,"p":1,"a":["thepriolettifam"]},{"n":"thegourmandgirl","h":"","v":0,"g":0.0,"p":1,"a":["thegourmandgirl"]},{"n":"TheModestLisa","h":"","v":0,"g":0.0,"p":1,"a":["themodestlisa"]},{"n":"tieka patience","h":"","v":0,"g":0.0,"p":1,"a":["tiekapatience"]},{"n":"TIKTOK SHOP","h":"","v":0,"g":0.0,"p":1,"a":["tiktokshop"]},{"n":"TikTokTy 💡","h":"","v":0,"g":0.0,"p":1,"a":["tiktokty"]},{"n":"TikTokTy2","h":"","v":0,"g":0.0,"p":1,"a":["tiktokty2"]},{"n":"Trishbru","h":"","v":0,"g":0.0,"p":1,"a":["trishbru"]},{"n":"true_floridian_girl","h":"","v":0,"g":0.0,"p":1,"a":["truefloridiangirl"]},{"n":"TrueDevotion575_glp","h":"","v":0,"g":0.0,"p":1,"a":["truedevotion575glp"]},{"n":"Turnburn_mamma","h":"","v":0,"g":0.0,"p":1,"a":["turnburnmamma"]},{"n":"user01534923747","h":"","v":0,"g":0.0,"p":1,"a":["user01534923747"]},{"n":"user11859702848","h":"","v":0,"g":0.0,"p":1,"a":["user11859702848"]},{"n":"user17587401575","h":"","v":0,"g":0.0,"p":5,"a":["user17587401575"]},{"n":"user18412365981","h":"","v":0,"g":0.0,"p":1,"a":["user18412365981"]},{"n":"user40440557647","h":"","v":0,"g":0.0,"p":1,"a":["user40440557647"]},{"n":"user55509170379","h":"","v":0,"g":0.0,"p":3,"a":["user55509170379"]},{"n":"user55919675632","h":"","v":0,"g":0.0,"p":6,"a":["user55919675632"]},{"n":"user58455381906","h":"","v":0,"g":0.0,"p":29,"a":["user58455381906"]},{"n":"user71722044251","h":"","v":0,"g":0.0,"p":1,"a":["user71722044251"]},{"n":"user74424891481","h":"","v":0,"g":0.0,"p":4,"a":["user74424891481"]},{"n":"user90920839887","h":"","v":0,"g":0.0,"p":1,"a":["user90920839887"]},{"n":"veronicafunes84","h":"","v":0,"g":0.0,"p":1,"a":["veronicafunes84"]},{"n":"Vlad’s finds💠","h":"","v":0,"g":0.0,"p":1,"a":["vladsfinds"]},{"n":"Wanda Hill | Beauty & Wellness","h":"","v":0,"g":0.0,"p":1,"a":["wandahillbeautywellness"]},{"n":"wellnesswithtammy","h":"","v":0,"g":0.0,"p":1,"a":["wellnesswithtammy"]},{"n":"Willow🏋️‍♀️🪽🦇💥💙","h":"","v":0,"g":0.0,"p":1,"a":["willow"]},{"n":"Xx.Baby.Doll.xX","h":"","v":0,"g":0.0,"p":2,"a":["xxbabydollxx"]},{"n":"Yaima","h":"","v":0,"g":0.0,"p":1,"a":["yaima"]},{"n":"Yainety hogar y granja 💗","h":"","v":0,"g":0.0,"p":1,"a":["yainetyhogarygranja"]},{"n":"Yaneth Garcia.","h":"","v":0,"g":0.0,"p":1,"a":["yanethgarcia"]},{"n":"Yasmin❤️","h":"","v":0,"g":0.0,"p":4,"a":["yasmin"]},{"n":"yendyfabre","h":"","v":0,"g":0.0,"p":1,"a":["yendyfabre"]},{"n":"Yeny Oliva De Barralaga","h":"","v":0,"g":0.0,"p":3,"a":["yenyolivadebarralaga"]},{"n":"Young_granma","h":"","v":0,"g":0.0,"p":1,"a":["younggranma"]},{"n":"Zada Zida","h":"","v":0,"g":0.0,"p":1,"a":["zadazida"]},{"n":"ZULA","h":"","v":0,"g":0.0,"p":1,"a":["zula"]},{"n":"Z|ClarkCottageFarm🌱✝️⚓️🥔⚡️✈️","h":"","v":0,"g":0.0,"p":1,"a":["zclarkcottagefarm"]},{"n":"⋆𐙚₊˚⊹♡ Andrea 𐙚₊˚⊹♡","h":"","v":0,"g":0.0,"p":1,"a":["andrea"]},{"n":"♥️💙la_gitana_delbombon🍫","h":"","v":0,"g":0.0,"p":1,"a":["lagitanadelbombon"]},{"n":"✨️Breath of Fresh Air🌬✨️","h":"","v":0,"g":0.0,"p":1,"a":["breathoffreshair"]},{"n":"✨💎 BENDECIDA RACHEL 💎✨","h":"","v":0,"g":0.0,"p":1,"a":["bendecidarachel"]},{"n":"❌Marla❌","h":"","v":0,"g":0.0,"p":2,"a":["marla"]},{"n":"🇲🇽🦁ClaudiaDejauregui🐎","h":"","v":0,"g":0.0,"p":1,"a":["claudiadejauregui"]},{"n":"🌹BELLA🌻💋","h":"","v":0,"g":0.0,"p":1,"a":["bella"]},{"n":"🌻Dominican_girl_1115🇩🇴🛒🛍️","h":"","v":0,"g":0.0,"p":1,"a":["dominicangirl1115"]},{"n":"🍭SugarRush🍭","h":"","v":0,"g":0.0,"p":1,"a":["sugarrush"]},{"n":"🏋‍♀💎Johanny Mendez 💎🏋‍♀","h":"","v":0,"g":0.0,"p":1,"a":["johannymendez"]},{"n":"🐚Rosa Ortiz 🛒","h":"","v":0,"g":0.0,"p":3,"a":["rosaortiz"]},{"n":"🐦‍🔥🍯Maybe🐦‍🔥🍯","h":"","v":0,"g":0.0,"p":2,"a":["maybe"]},{"n":"💓 Ru B Na 💓","h":"","v":0,"g":0.0,"p":1,"a":["rubna"]},{"n":"💜✝️NanaStacey✝️💜","h":"","v":0,"g":0.0,"p":1,"a":["nanastacey"]},{"n":"💥💜🦋Barbie💥","h":"","v":0,"g":0.0,"p":1,"a":["barbie"]},{"n":"🥀 👄 Talk With Ms Trish 🥀","h":"","v":0,"g":0.0,"p":1,"a":["talkwithmstrish"]},{"n":"🦅CASTY 👑","h":"","v":0,"g":0.0,"p":3,"a":["casty"]},{"n":"🦋Ariana🦋🥰❤️😘","h":"","v":0,"g":0.0,"p":1,"a":["ariana"]},{"n":"🦋Cece🦋","h":"","v":0,"g":0.0,"p":1,"a":["cece"]},{"n":"🦋Maryo💜","h":"","v":0,"g":0.0,"p":1,"a":["maryo"]},{"n":"🪷Tulsha🦋","h":"","v":0,"g":0.0,"p":1,"a":["tulsha"]},{"n":"🫧 Tadeo 💫","h":"","v":0,"g":0.0,"p":1,"a":["tadeo"]}];
+var INDEX = {};
+DATA.forEach(function(d, i){
+  (d.a || []).forEach(function(k){ if(!(k in INDEX)) INDEX[k] = i; });
+});
+function normKey(s){
+  return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/^@/, '').replace(/[^a-z0-9]/g, '');
+}
+function findCreator(raw){
+  var k = normKey(raw);
+  if(!k) return null;
+  if(k in INDEX) return DATA[INDEX[k]];
+  var best = null;
+  DATA.forEach(function(d){
+    (d.a || []).forEach(function(a){
+      if(a.indexOf(k) === 0 || k.indexOf(a) === 0){
+        if(!best || d.g > best.g) best = d;
+      }
+    });
+  });
+  if(best) return best;
+  DATA.forEach(function(d){
+    (d.a || []).forEach(function(a){
+      if(a.indexOf(k) > -1){
+        if(!best || d.g > best.g) best = d;
+      }
+    });
+  });
+  return best;
+}
+function money(n){
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+/* ===== rolling top 5 ===== */
+(function(){
+  var track = document.getElementById('tickTrack');
+  if(!track) return;
+  var top5 = DATA.slice().sort(function(a,b){ return b.g - a.g; }).slice(0,5);
+  function card(d, rank){
+    return '<button type="button" class="rank-card' + (rank === 1 ? ' top1' : '') + '" data-k="' + (d.h || d.n).replace(/"/g,'&quot;') + '">' +
+      '<div class="rank-top"><span class="rank-no">' + rank + '</span><span class="rank-name">' + esc(d.n) + '</span></div>' +
+      '<div class="rank-h">' + esc(d.h || normKey(d.n)) + '</div>' +
+      '<div class="rank-nums">' +
+        '<div class="rank-num"><b>' + d.v + '</b><span>Videos</span></div>' +
+        '<div class="rank-num"><b>' + money(d.g) + '</b><span>GMV</span></div>' +
+      '</div>' +
+    '</button>';
+  }
+  var set = top5.map(function(d,i){ return card(d, i+1); }).join('');
+  track.innerHTML = '<div class="tick-set">' + set + '</div><div class="tick-set" aria-hidden="true">' + set + '</div>';
+  track.querySelectorAll('.rank-card').forEach(function(el, i){
+    el.addEventListener('click', function(){
+      var d = top5[i % 5];
+      input.value = d.h || d.n;
+      form.dispatchEvent(new Event('submit'));
+    });
+  });
+})();
+
 
 /* ===== toast ===== */
 var toastEl = document.getElementById('toast');
@@ -483,21 +706,23 @@ form.addEventListener('submit', function(e){
     input.focus();
     return;
   }
-  var key = h.replace(/^@/,'').toLowerCase();
-  var row = STATS[key];
-  if(row && typeof row.videos === 'number'){
+  var row = findCreator(h);
+  if(row){
     result.innerHTML =
-      '<div class="handle">' + esc(h.replace(/^@/,'')) + '</div>' +
+      '<div class="handle">' + esc(row.h || row.n) + '</div>' +
+      (row.h ? '' : '<div class="handle-sub">' + esc(row.n) + '</div>') +
       '<div class="stat-grid">' +
-        '<div class="stat-box"><div class="num">' + row.videos + '</div><div class="lbl">Videos Posted</div></div>' +
-        '<div class="stat-box"><div class="num">$' + row.gmv.toLocaleString() + '</div><div class="lbl">GMV</div></div>' +
-      '</div>';
+        '<div class="stat-box"><div class="num">' + row.v + '</div><div class="lbl">Videos in November</div></div>' +
+        '<div class="stat-box"><div class="num">' + money(row.g) + '</div><div class="lbl">GMV (all-time)</div></div>' +
+      '</div>' +
+      '<div class="stat-note">Video count includes only posts from Nov 1, 2026 onward. GMV includes every video, including ones posted before November.</div>' +
+      (row.h ? '<a class="stat-link" href="https://www.tiktok.com/@' + esc(row.h) + '" target="_blank" rel="noopener">Open profile on TikTok</a>' : '');
   } else {
     result.innerHTML =
       '<div class="handle">' + esc(h.replace(/^@/,'')) + '</div>' +
       '<div class="pending">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>' +
-        '<p><strong>GMV numbers are coming to this page soon.</strong>Keep posting — your video count and GMV will be published here as the challenge progresses. Check back after you post.</p>' +
+        '<p><strong>We could not find that handle in this batch.</strong>Try the exact TikTok handle (for example @mayamakesgutscience) or the creator name as it appears on TikTok. Stats refresh with each new data batch.</p>' +
       '</div>';
   }
   result.classList.remove('show');
